@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -14,5 +15,15 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.dashboard');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        /* $toastr = array(
+            'message' => 'Logged out Successfully',
+            'alert-type' => 'success'
+        ); */
+        return redirect()->route('admin.login');
     }
 }

@@ -1,52 +1,44 @@
-<footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.0-rc.1
-    </div>
-  </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
 
-<!-- jQuery -->
-<script src="{{asset('adminpanel')}}/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{asset('adminpanel')}}/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"></script>
-<!-- ChartJS -->
-<script src="{{asset('adminpanel')}}/plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="{{asset('adminpanel')}}/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="{{asset('adminpanel')}}/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="{{asset('adminpanel')}}/plugins/jqvmap/maps/jquery.vmap.world.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{asset('adminpanel')}}/plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="{{asset('adminpanel')}}/plugins/moment/moment.min.js"></script>
-<script src="{{asset('adminpanel')}}/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{asset('adminpanel')}}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="{{asset('adminpanel')}}/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="{{asset('adminpanel')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('adminpanel')}}/dist/js/adminlte.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('adminpanel')}}/dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('adminpanel')}}/dist/js/demo.js"></script>
+    <!-- BEGIN: Footer-->
+    <footer class="footer footer-static footer-light">
+        <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="ml-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-right d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
+    </footer>
+    <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
+    <!-- END: Footer-->
+
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="{{ asset('adminpanel') }}/app-assets/vendors/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{{ asset('adminpanel') }}/app-assets/vendors/js/charts/apexcharts.min.js"></script>
+    <script src="{{ asset('adminpanel') }}/app-assets/vendors/js/extensions/toastr.min.js"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{{ asset('adminpanel') }}/app-assets/js/core/app-menu.js"></script>
+    <script src="{{ asset('adminpanel') }}/app-assets/js/core/app.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="{{ asset('adminpanel') }}/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
+    <!-- END: Page JS-->
+
+    <script>
+        $(window).on('load', function() {
+            if (feather) {
+                feather.replace({
+                    width: 14,
+                    height: 14
+                });
+            }
+        })
+    </script>
 </body>
+<!-- END: Body-->
+
 </html>

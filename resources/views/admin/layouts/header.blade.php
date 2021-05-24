@@ -55,13 +55,16 @@
         href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/plugins/charts/chart-apex.css">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/plugins/extensions/ext-component-toastr.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/plugins/extensions/ext-component-sweet-alerts.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
     @if (LaravelLocalization::getCurrentLocale() == 'ar')
         <link rel="stylesheet" type="text/css" href="{{ asset('adminpanel') }}/app-assets/css-rtl/custom-rtl.css">
     @endif
-    <link rel="stylesheet" type="text/css" href="{{ asset('adminpanel') }}/assets/css/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'style-rtl' : 'style' }}.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('adminpanel') }}/assets/css/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'style-rtl' : 'style' }}.css">
     <!-- END: Custom CSS-->
 
 </head>

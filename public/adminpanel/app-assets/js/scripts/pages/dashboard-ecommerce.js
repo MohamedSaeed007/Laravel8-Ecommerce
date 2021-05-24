@@ -57,8 +57,8 @@ $(window).on('load', function () {
   var goalOverviewChart;
   var isRtl = $('html').attr('data-textdirection') === 'rtl';
 
-  // On load Toast
- /*  setTimeout(function () {
+  /* // On load Toast
+   setTimeout(function () {
     toastr['success'](
       'You have successfully logged in to Vuexy. Now you can start to explore!',
       '👋 Welcome John Doe!',
@@ -68,8 +68,8 @@ $(window).on('load', function () {
         rtl: isRtl
       }
     );
-  }, 2000);
- */
+  }, 2000); */
+ 
   //------------ Statistics Bar Chart ------------
   //----------------------------------------------
   statisticsOrderChartOptions = {

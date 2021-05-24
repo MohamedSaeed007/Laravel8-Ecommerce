@@ -22,33 +22,46 @@
         rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('adminpanel') }}/app-assets/vendors/css/vendors-rtl.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('adminpanel') }}/app-assets/vendors/css/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'vendors-rtl' : 'vendors' }}.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('adminpanel') }}/app-assets/vendors/css/extensions/toastr.min.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('adminpanel') }}/app-assets/css-rtl/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('adminpanel') }}/app-assets/css-rtl/bootstrap-extended.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('adminpanel') }}/app-assets/css-rtl/colors.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('adminpanel') }}/app-assets/css-rtl/components.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('adminpanel') }}/app-assets/css-rtl/themes/dark-layout.css">
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('adminpanel') }}/app-assets/css-rtl/themes/bordered-layout.css">
+        href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/bootstrap.css">
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('adminpanel') }}/app-assets/css-rtl/themes/semi-dark-layout.css">
+        href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/colors.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/components.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/themes/dark-layout.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/themes/bordered-layout.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/themes/semi-dark-layout.css">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('adminpanel') }}/app-assets/css-rtl/core/menu/menu-types/vertical-menu.css">
+        href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('adminpanel') }}/app-assets/css-rtl/plugins/forms/form-validation.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('adminpanel') }}/app-assets/css-rtl/pages/page-auth.css">
+        href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/plugins/forms/form-validation.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/pages/page-auth.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('adminpanel') }}/app-assets/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'css-rtl' : 'css' }}/plugins/extensions/ext-component-toastr.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('adminpanel') }}/app-assets/css-rtl/custom-rtl.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('adminpanel') }}/assets/css/style-rtl.css">
+    @if (LaravelLocalization::getCurrentLocale() == 'ar')
+        <link rel="stylesheet" type="text/css" href="{{ asset('adminpanel') }}/app-assets/css-rtl/custom-rtl.css">
+    @endif
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('adminpanel') }}/assets/css/{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'style-rtl' : 'style' }}.css">
     <!-- END: Custom CSS-->
-
 </head>
 <!-- END: Head-->
 
@@ -64,6 +77,7 @@
 
     <!-- BEGIN: Page Vendor JS-->
     <script src="{{ asset('adminpanel') }}/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+    <script src="{{ asset('adminpanel') }}/app-assets/vendors/js/extensions/toastr.min.js"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -84,6 +98,47 @@
                 });
             }
         })
+
+    </script>
+    <!-- Toastr -->
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}";
+            var isRtl = $('html').attr('data-textdirection') === 'rtl';
+            switch(type){
+            case 'info':
+            toastr['info']("{{ Session::get('message') }}", 'Info!', {
+            closeButton: true,
+            tapToDismiss: false,
+            rtl: isRtl
+            });
+            break;
+        
+            case 'warning':
+            toastr['warning']("{{ Session::get('message') }}", 'Warning!', {
+            closeButton: true,
+            tapToDismiss: false,
+            rtl: isRtl
+            });
+            break;
+        
+            case 'success':
+            toastr['success']("{{ Session::get('message') }}", 'Success!', {
+            closeButton: true,
+            tapToDismiss: false,
+            rtl: isRtl
+            });
+            break;
+        
+            case 'error':
+            toastr['error']("{{ Session::get('message') }}", 'Error!', {
+            closeButton: true,
+            tapToDismiss: false,
+            rtl: isRtl
+            });
+            break;
+            }
+        @endif
 
     </script>
 </body>

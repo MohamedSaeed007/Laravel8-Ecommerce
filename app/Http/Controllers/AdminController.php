@@ -20,10 +20,10 @@ class AdminController extends Controller
     public function logout()
     {
         Auth::logout();
-        /* $toastr = array(
+        $toastr = array(
             'message' => 'Logged out Successfully',
             'alert-type' => 'success'
-        ); */
-        return redirect()->route('admin.login');
+        ); 
+        return redirect()->route('admin.login')->with($toastr);
     }
 }

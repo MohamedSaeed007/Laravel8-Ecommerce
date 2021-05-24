@@ -1,73 +1,128 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<!-- CONTENT AREA -->
+    <div class="content-area">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+        <!-- PAGE -->
+        <section class="page-section color">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3 class="block-title"><span>{{ __('Login') }}</span></h3>
+                        <form class="form-login" method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-12 hello-text-wrap">
+                                    <span class="hello-text text-thin">Hello, welcome to your account</span>
+                                </div>
+                                <div class="col-md-12 col-lg-6 hide">
+                                    <a class="btn btn-theme btn-block btn-icon-left facebook" href="#"><i
+                                            class="fa fa-facebook"></i>Sign in with Facebook</a>
+                                </div>
+                                <div class="col-md-12 col-lg-6 hide">
+                                    <a class="btn btn-theme btn-block btn-icon-left twitter" href="#"><i
+                                            class="fa fa-twitter"></i>Sign in with Twitter</a>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group"><input class="form-control" type="email" name="email"
+                                            placeholder="john@doe.com"></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group"><input class="form-control" type="password" name="password"
+                                            placeholder="{{ __('Password') }}"></div>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" id="remember" name="remember"
+                                                {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}</label>
+                                    </div>
+                                </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @if (Route::has('password.request'))
+                                    <div class="col-md-12 col-lg-6 text-right-lg">
+                                        <a class="forgot-password"
+                                            href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+                                    </div>
+                                @endif
+                                <div class="col-md-6">
+                                    <button class="btn btn-theme btn-block btn-theme-dark"
+                                        type="submit">{{ __('Login') }}</button>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3 class="block-title"><span>Create New Account</span></h3>
+                        <form action="#" class="create-account">
+                            <div class="row">
+                                <div class="col-md-12 hello-text-wrap">
+                                    <span class="hello-text text-thin">Create Your Account on {{ env('APP_NAME') }}</span>
+                                </div>
+                                <div class="col-md-12">
+                                    <h3 class="block-title">Signup Today and You'll be able to</h3>
+                                    <ul class="list-check">
+                                        <li>Online Order Status</li>
+                                        <li>See Ready Hot Deals</li>
+                                        <li>Love List</li>
+                                        <li>Sign up to receive exclusive news and private sales</li>
+                                        <li>Quick Buy Stuffs</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="btn btn-block btn-theme btn-theme-dark btn-create"
+                                        href="{{ route('register') }}">{{ __('register') }}</a>
+                                </div>
                             </div>
-                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /PAGE -->
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
+        <!-- PAGE -->
+        <section class="page-section">
+            <div class="container">
+                <div class="row blocks shop-info-banners">
+                    <div class="col-md-4">
+                        <div class="block">
+                            <div class="media">
+                                <div class="pull-right"><i class="fa fa-gift"></i></div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Buy 1 Get 1</h4>
+                                    Proin dictum elementum velit. Fusce euismod consequat ante.
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+                    </div>
+                    <div class="col-md-4">
+                        <div class="block">
+                            <div class="media">
+                                <div class="pull-right"><i class="fa fa-comments"></i></div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Call to Free</h4>
+                                    Proin dictum elementum velit. Fusce euismod consequat ante.
+                                </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="block">
+                            <div class="media">
+                                <div class="pull-right"><i class="fa fa-trophy"></i></div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Money Back!</h4>
+                                    Proin dictum elementum velit. Fusce euismod consequat ante.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <!-- /PAGE -->
+
     </div>
-</div>
+    <!-- /CONTENT AREA -->
 @endsection

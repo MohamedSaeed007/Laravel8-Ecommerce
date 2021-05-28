@@ -1,3 +1,6 @@
+</div>
+</div>
+<!-- END: Content-->
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
 
@@ -19,7 +22,9 @@
 <!-- BEGIN: Page Vendor JS-->
 <script src="{{ asset('adminpanel') }}/app-assets/vendors/js/charts/apexcharts.min.js"></script>
 <script src="{{ asset('adminpanel') }}/app-assets/vendors/js/extensions/toastr.min.js"></script>
+<script src="{{ asset('adminpanel') }}/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
 <!-- END: Page Vendor JS-->
+@yield('scripts')
 
 <!-- BEGIN: Theme JS-->
 <script src="{{ asset('adminpanel') }}/app-assets/js/core/app-menu.js"></script>
@@ -28,8 +33,8 @@
 
 <!-- BEGIN: Page JS-->
 <script src="{{ asset('adminpanel') }}/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
-<script src="{{ asset('adminpanel') }}/app-assets/js/scripts/extensions/ext-component-sweet-alerts.js"></script>
 <!-- END: Page JS-->
+
 
 <script>
     $(window).on('load', function() {
@@ -50,7 +55,7 @@
         var type = "{{ Session::get('alert-type', 'info') }}";
         switch(type){
         case 'info':
-        toastr['info']("{{ Session::get('message') }}", 'Info!', {
+        toastr['info']("{{ Session::get('message') }}", "{{ __('site.Info') }}", {
         closeButton: true,
         tapToDismiss: false,
         rtl: isRtl
@@ -58,7 +63,7 @@
         break;
     
         case 'warning':
-        toastr['warning']("{{ Session::get('message') }}", 'Warning!', {
+        toastr['warning']("{{ Session::get('message') }}", "{{ __('site.Warning') }}", {
         closeButton: true,
         tapToDismiss: false,
         rtl: isRtl
@@ -66,7 +71,7 @@
         break;
     
         case 'success':
-        toastr['success']("{{ Session::get('message') }}", 'Success!', {
+        toastr['success']("{{ Session::get('message') }}", "{{ __('site.Success') }}", {
         closeButton: true,
         tapToDismiss: false,
         rtl: isRtl
@@ -74,7 +79,7 @@
         break;
     
         case 'error':
-        toastr['error']("{{ Session::get('message') }}", 'Error!', {
+        toastr['error']("{{ Session::get('message') }}", "{{ __('site.Error') }}", {
         closeButton: true,
         tapToDismiss: false,
         rtl: isRtl
@@ -82,6 +87,7 @@
         break;
         }
     @endif
+
 
 </script>
 </body>
